@@ -3,7 +3,7 @@ import typescript from "rollup-plugin-typescript2";
 import pkg from "./package.json";
 
 export default {
-  input: "cli.ts",
+  input: "src/cli.ts",
   output: {
     file: pkg.bin,
     format: "cjs",
