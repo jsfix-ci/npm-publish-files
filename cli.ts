@@ -14,7 +14,7 @@ const include = [
   "NOTICE"
 ];
 
-const ignore = [
+const defaultIgnore = [
   ".git",
   "CVS",
   ".svn",
@@ -32,15 +32,37 @@ const ignore = [
   "package-lock.json"
 ];
 
+const readIgnoreFiles = async () => {
+  const [npmignore, gitignore] = await Promise.all(
+    [".npmignore", ".gitignore"].map(
+      path =>
+        new Promise<Buffer | null>(async resolve => {
+          resolve((await fs.pathExists(path)) ? fs.readFile(path) : null);
+        })
+    )
+  );
+
+  if (npmignore || gitignore) {
+    // one of the does exist
+    return (npmignore || gitignore)!
+      .toString()
+      .split("\n")
+      .filter(Boolean);
+  } else {
+    return [];
+  }
+};
+
 type Yargs = { clean: boolean; dir: string; force: boolean };
 
 async function handler({ clean, dir, force }: Yargs) {
   try {
     dir = path.relative(process.cwd(), dir);
     await fs.ensureDir(dir);
+    const externalIgnore = await readIgnoreFiles();
     const files: string[] = await glob.async(include, {
       case: false,
-      ignore,
+      ignore: [...defaultIgnore, ...externalIgnore],
       stats: false
     });
 
