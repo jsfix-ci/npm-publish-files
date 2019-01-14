@@ -1,4 +1,6 @@
 .rpt2_cache
-node_modules
 cli.d.ts
 cli.js
+coverage
+node_modules
+test/tmp

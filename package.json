@@ -12,11 +12,11 @@
     "cli.js"
   ],
   "scripts": {
+    "watch": "rollup -cw",
     "lint": "tslint -p tsconfig.json",
     "typecheck": "tsc -p tsconfig.json --noEmit",
-    "watch": "rollup -cw",
     "build": "rollup -c",
-    "preversion": "npm run lint && npm run build",
+    "preversion": "npm run lint && npm test && npm run build",
     "version": "standard-version",
     "push": "git push --follow-tags origin master",
     "prepublishOnly": "npm run version && npm run push"
@@ -31,18 +31,21 @@
   },
   "devDependencies": {
     "@types/fs-extra": "^5.0.4",
+    "@types/jest": "^23.3.12",
     "@types/node": "^10.12.18",
     "@types/yargs": "^12.0.5",
+    "jest": "^23.6.0",
     "prettier": "^1.15.3",
-    "rollup": "^1.1.0",
     "rollup-plugin-typescript2": "^0.18.1",
+    "rollup": "^1.1.0",
     "standard-version": "^4.4.0",
+    "ts-jest": "^23.10.5",
     "ts-node": "^7.0.1",
-    "tslint": "^5.12.0",
     "tslint-config-prettier": "^1.17.0",
     "tslint-config-standard": "^8.0.1",
     "tslint-plugin-prettier": "^2.0.1",
     "tslint-react": "^3.6.0",
+    "tslint": "^5.12.0",
     "typescript": "^3.2.2"
   },
   "keywords": [
