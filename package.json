@@ -1,6 +1,6 @@
 {
   "name": "npm-publish-files",
-  "version": "0.2.1",
+  "version": "1.0.0",
   "description": "Copy files npm includes in publish to a sub directory",
   "author": "Iiro Jäppinen <iiro@jappinen.fi> (https://iiro.fi)",
   "license": "MIT",
