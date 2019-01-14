@@ -1,0 +1,18 @@
+import typescript from "rollup-plugin-typescript2";
+
+import pkg from "./package.json";
+
+export default {
+  input: "cli.ts",
+  output: {
+    file: pkg.bin,
+    format: "cjs",
+    banner: "#!/usr/bin/env node"
+  },
+  external: ["path", ...Object.keys(pkg.dependencies)],
+  plugins: [
+    typescript({
+      typescript: require("typescript")
+    })
+  ]
+};
