@@ -2,44 +2,23 @@ import * as fs from "fs-extra";
 import * as path from "path";
 import * as glob from "fast-glob";
 
-import readIgnoreFiles from "./readIgnoreFiles";
-
 // https://docs.npmjs.com/files/package.json#files
 const include = [
-  "README",
-  "CHANGES",
-  "CHANGELOG",
-  "HISTORY",
-  "LICENSE",
-  "LICENCE",
-  "NOTICE"
-];
-
-const defaultIgnore = [
-  ".git",
-  "CVS",
-  ".svn",
-  ".hg",
-  ".lock-wscript",
-  ".wafpickle-N",
-  ".*.swp",
-  ".DS_Store",
-  "._*",
-  "npm-debug.log",
-  ".npmrc",
-  "node_modules",
-  "config.gypi",
-  "*.orig",
-  "package-lock.json"
+  "README*",
+  "CHANGES*",
+  "CHANGELOG*",
+  "HISTORY*",
+  "LICENSE*",
+  "LICENCE*",
+  "NOTICE*"
 ];
 
 export default async function handler({ clean, dir, force }: Yargs) {
   dir = path.relative(process.cwd(), dir);
   await fs.ensureDir(dir);
-  const externalIgnore = await readIgnoreFiles();
   const files: string[] = await glob.async(include, {
     case: false,
-    ignore: [...defaultIgnore, ...externalIgnore],
+    onlyFiles: true,
     stats: false
   });
 

@@ -17,6 +17,8 @@ test("handler", async () => {
   });
 
   expect(await fs.pathExists(TMP_DIR + "/LICENSE")).toBeTruthy();
+  expect(await fs.pathExists(TMP_DIR + "/CHANGELOG.md")).toBeTruthy();
+  expect(await fs.pathExists(TMP_DIR + "/README.md")).toBeTruthy();
   expect(await fs.pathExists(TMP_DIR + "/package.json")).toBeTruthy();
   expect(await fs.pathExists(TMP_DIR + "/package-lock.json")).toBeFalsy();
 
@@ -27,7 +29,7 @@ test("handler", async () => {
       dir: TMP_DIR,
       force: false
     })
-  ).rejects.toMatchSnapshot();
+  ).rejects.toBeTruthy();
 
   // Succesfully overwrites temp files with -f
   await expect(
@@ -46,5 +48,7 @@ test("handler", async () => {
   });
 
   expect(await fs.pathExists(TMP_DIR + "/LICENSE")).toBeFalsy();
+  expect(await fs.pathExists(TMP_DIR + "/CHANGELOG.md")).toBeFalsy();
+  expect(await fs.pathExists(TMP_DIR + "/README.md")).toBeFalsy();
   expect(await fs.pathExists(TMP_DIR + "/package.json")).toBeFalsy();
 });
