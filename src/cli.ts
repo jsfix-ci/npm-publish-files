@@ -5,7 +5,7 @@ import handler from "./handler";
 yargs
   .command<Yargs>({
     command: "$0 <dir>",
-    describe: "Copy npm publish files to <dir>.",
+    describe: "Copy special files `npm publish` always includes to <dir>",
     handler
   })
   .option("f", {

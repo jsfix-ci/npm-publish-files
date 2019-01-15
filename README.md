@@ -1,7 +1,7 @@
 <div align="center">
   <h1 align="center">npm-publish-files</h1>
   <br/>
-  <p>Copy files npm includes in publish to a sub directory</p>
+  <p>Copy special files <code>npm publish</code> always includes to a sub directory</p>
   <a href="https://www.npmjs.com/package/npm-publish-files"><strong>npm</strong></a> ·
   <a href="https://github.com/iiroj/npm-publish-files"><strong>GitHub</strong></a>
   <br/>
@@ -25,7 +25,7 @@
   <br/>
 </div>
 
-If you want to build a large npm project into a sub folder `dist/`, but then treat that as the root directory for the published package, you will need to copy all other files npm includes in the publish. Let `npm-publish-files` do that for you!
+If you want to build a large npm project into a sub folder `dist/`, but then treat that as the root directory for the published package, you will need to copy all other special files npm includes in the publish. Let `npm-publish-files` do that for you!
 
 ### Install
 
