@@ -9,9 +9,6 @@
   <a href="https://www.npmjs.com/package/npm-publish-files">
     <img src="https://img.shields.io/npm/v/npm-publish-files.svg">
   </a>
-  <a href="https://travis-ci.com/iiroj/npm-publish-files">
-    <img src="https://travis-ci.com/iiroj/npm-publish-files.svg?branch=master" />
-  </a>
   <a href="https://github.com/iiroj/npm-publish-files">
     <img src="https://img.shields.io/github/languages/code-size/iiroj/npm-publish-files.svg">
   </a>
