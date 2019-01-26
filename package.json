@@ -1,6 +1,6 @@
 {
   "name": "npm-publish-files",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Copy special files `npm publish` always includes to a sub directory",
   "author": "Iiro Jäppinen <iiro@jappinen.fi> (https://iiro.fi)",
   "license": "MIT",
