@@ -27,26 +27,26 @@
   "dependencies": {
     "fast-glob": "^2.2.6",
     "fs-extra": "^7.0.1",
-    "yargs": "^12.0.5"
+    "yargs": "^13.2.1"
   },
   "devDependencies": {
-    "@types/fs-extra": "^5.0.4",
-    "@types/jest": "^24.0.0",
-    "@types/node": "^10.12.21",
-    "@types/yargs": "^12.0.8",
+    "@types/fs-extra": "^5.0.5",
+    "@types/jest": "^24.0.9",
+    "@types/node": "^11.10.4",
+    "@types/yargs": "^12.0.9",
     "jest": "^24.1.0",
     "prettier": "^1.16.4",
-    "rollup-plugin-typescript2": "^0.19.2",
-    "rollup": "^1.1.2",
-    "standard-version": "^4.4.0",
-    "ts-jest": "^23.10.5",
+    "rollup-plugin-typescript2": "^0.19.3",
+    "rollup": "^1.4.0",
+    "standard-version": "^5.0.1",
+    "ts-jest": "^24.0.0",
     "ts-node": "^8.0.2",
     "tslint-config-prettier": "^1.18.0",
     "tslint-config-standard": "^8.0.1",
     "tslint-plugin-prettier": "^2.0.1",
     "tslint-react": "^3.6.0",
-    "tslint": "^5.12.1",
-    "typescript": "^3.3.1"
+    "tslint": "^5.13.1",
+    "typescript": "^3.3.3333"
   },
   "keywords": [
     "copy",
