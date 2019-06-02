@@ -1,6 +1,20 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+### [1.0.12](https://github.com/iiroj/npm-publish-files/compare/v1.0.11...v1.0.12) (2019-06-02)
+
+
+### Bug Fixes
+
+* downgrade fs-extra because of issues with Jest ([b2418e5](https://github.com/iiroj/npm-publish-files/commit/b2418e5))
+
+
+### Tests
+
+* run in node environment ([64c0edb](https://github.com/iiroj/npm-publish-files/commit/64c0edb))
+
+
 
 ## [1.0.11](https://github.com/iiroj/npm-publish-files/compare/v1.0.10...v1.0.11) (2019-04-28)
 
