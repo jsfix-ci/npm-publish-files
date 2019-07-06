@@ -1,6 +1,6 @@
-import * as fs from "fs-extra";
-import * as path from "path";
-import * as glob from "fast-glob";
+import glob from "fast-glob";
+import fs from "fs-extra";
+import path from "path";
 
 // https://docs.npmjs.com/files/package.json#files
 const include = [
@@ -16,8 +16,8 @@ const include = [
 export default async function handler({ clean, dir, force }: Yargs) {
   dir = path.relative(process.cwd(), dir);
   await fs.ensureDir(dir);
-  const files: string[] = await glob.async(include, {
-    case: false,
+  const files: string[] = await glob(include, {
+    caseSensitiveMatch: false,
     onlyFiles: true,
     stats: false
   });
