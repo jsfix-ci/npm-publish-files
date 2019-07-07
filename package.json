@@ -11,18 +11,35 @@
   "files": [
     "cli.js"
   ],
+  "engines": {
+    "node": ">= 8.10"
+  },
   "scripts": {
     "watch": "rollup -cw",
     "lint": "tslint -p tsconfig.json",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "test": "jest",
     "build": "rollup -c",
-    "preversion": "npm run lint && npm test && npm run build",
-    "version": "standard-version",
-    "push": "git push --follow-tags origin master"
+    "version": "standard-version --no-verify"
   },
-  "engines": {
-    "node": ">= 8.10"
+  "lint-staged": {
+    "*.{ts}": "npm run lint"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "standard-version": {
+    "scripts": {
+      "prerelease": "npm run lint && npm test && npm run build"
+    }
   },
   "dependencies": {
     "fast-glob": "^3.0.4",
@@ -30,22 +47,26 @@
     "yargs": "^13.2.4"
   },
   "devDependencies": {
+    "@commitlint/config-conventional": "^8.0.0",
     "@types/fs-extra": "^8.0.0",
     "@types/jest": "^24.0.15",
     "@types/node": "^12.0.12",
     "@types/yargs": "^13.0.0",
+    "commitlint": "^8.0.0",
+    "husky": "^3.0.0",
     "jest": "^24.8.0",
+    "lint-staged": "^9.1.0",
     "prettier": "^1.18.2",
-    "rollup-plugin-typescript2": "^0.21.2",
     "rollup": "^1.16.6",
+    "rollup-plugin-typescript2": "^0.21.2",
     "standard-version": "^6.0.1",
     "ts-jest": "^24.0.2",
     "ts-node": "^8.3.0",
+    "tslint": "^5.18.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-config-standard": "^8.0.1",
     "tslint-plugin-prettier": "^2.0.1",
     "tslint-react": "^4.0.0",
-    "tslint": "^5.18.0",
     "typescript": "^3.5.2"
   },
   "keywords": [
