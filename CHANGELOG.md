@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.14](https://github.com/iiroj/npm-publish-files/compare/v1.0.13...v1.0.14) (2019-07-07)
+
+
+### Build System
+
+* add husky, commitlint and lint-staged ([890e127](https://github.com/iiroj/npm-publish-files/commit/890e127))
+
+
+
 ### [1.0.13](https://github.com/iiroj/npm-publish-files/compare/v1.0.12...v1.0.13) (2019-07-06)
 
 
