@@ -1,6 +1,6 @@
 # npm-publish-files
 
-[![CircleCI](https://circleci.com/gh/iiroj/npm-publish-files.svg?style=shield)](https://circleci.com/gh/iiroj/npm-publish-files)
+[![GitHub Actions](https://github.com/iiroj/npm-publish-files/workflows/Tags/badge.svg)](https://github.com/iiroj/npm-publish-files/actions)
 [![version](https://img.shields.io/npm/v/npm-publish-files.svg)](https://www.npmjs.com/package/npm-publish-files)
 [![code size](https://img.shields.io/github/languages/code-size/iiroj/npm-publish-files.svg)](https://github.com/iiroj/npm-publish-files)
 [![dependencies](https://img.shields.io/david/iiroj/npm-publish-files.svg)](https://github.com/iiroj/npm-publish-files/blob/master/package.json)
