@@ -25,11 +25,13 @@ export default async function handler({ clean, dir, force }: Yargs) {
 
   const publishFiles = ["package.json", ...defaultFiles];
 
+  const returnFileList = () => publishFiles;
+
   if (clean) {
     // --clean flag was used, remove files instead of copying
     return Promise.all(
       publishFiles.map(file => fs.remove(path.resolve(dist, file)))
-    );
+    ).then(returnFileList);
   }
 
   return Promise.all(
@@ -39,5 +41,5 @@ export default async function handler({ clean, dir, force }: Yargs) {
         overwrite: force
       })
     )
-  );
+  ).then(returnFileList);
 }
