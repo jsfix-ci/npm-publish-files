@@ -14,32 +14,30 @@ const include = [
 ];
 
 export default async function handler({ clean, dir, force }: Yargs) {
-  dir = path.relative(process.cwd(), dir);
-  await fs.ensureDir(dir);
-  const files: string[] = await glob(include, {
+  const dist = path.resolve(process.cwd(), dir);
+  await fs.ensureDir(dist);
+
+  const defaultFiles: string[] = await glob(include, {
     caseSensitiveMatch: false,
     onlyFiles: true,
     stats: false
   });
 
-  if (!clean) {
-    // Copy files
-    const copyOperations = [];
-    for (const file of ["package.json", ...files]) {
-      copyOperations.push(
-        fs.copy(file, `${dir}/${file}`, {
-          errorOnExist: true,
-          overwrite: force
-        })
-      );
-    }
-    await Promise.all(copyOperations);
-  } else {
-    // Remove files
-    const rmOperations = [];
-    for (const file of ["package.json", ...files]) {
-      rmOperations.push(fs.remove(`${dir}/${file}`));
-    }
-    await Promise.all(rmOperations);
+  const publishFiles = ["package.json", ...defaultFiles];
+
+  if (clean) {
+    // --clean flag was used, remove files instead of copying
+    return Promise.all(
+      publishFiles.map(file => fs.remove(path.resolve(dist, file)))
+    );
   }
+
+  return Promise.all(
+    publishFiles.map(file =>
+      fs.copy(file, path.resolve(dist, file), {
+        errorOnExist: true,
+        overwrite: force
+      })
+    )
+  );
 }

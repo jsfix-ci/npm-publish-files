@@ -22,7 +22,7 @@ test("handler", async () => {
   expect(await fs.pathExists(TMP_DIR + "/package.json")).toBeTruthy();
   expect(await fs.pathExists(TMP_DIR + "/package-lock.json")).toBeFalsy();
 
-  // Should faild to overwrite temp files without -f
+  // Should fail to overwrite temp files without -f
   await expect(
     handler({
       clean: false,
@@ -38,7 +38,7 @@ test("handler", async () => {
       dir: TMP_DIR,
       force: true
     })
-  ).resolves.toBeUndefined();
+  ).resolves.toBeTruthy();
 
   // Removes temp files with -c
   await handler({
