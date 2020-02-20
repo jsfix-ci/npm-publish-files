@@ -28,6 +28,8 @@ This script will make sure all necessary files are copied to `dist/` before runn
 }
 ```
 
+Any additional files specified in the ["file" property of package.json](https://docs.npmjs.com/files/package.json#files) will also be copied.
+
 After this your are free to run `npm publish dist`.
 
 ### Options

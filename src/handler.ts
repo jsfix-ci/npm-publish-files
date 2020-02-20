@@ -2,6 +2,8 @@ import glob from "fast-glob";
 import fs from "fs-extra";
 import path from "path";
 
+const PACKAGE_JSON = "package.json";
+
 // https://docs.npmjs.com/files/package.json#files
 const include = [
   "README*",
@@ -14,16 +16,24 @@ const include = [
 ];
 
 export default async function handler({ clean, dir, force }: Yargs) {
-  const dist = path.resolve(process.cwd(), dir);
+  const CWD = process.cwd();
+  const dist = path.resolve(CWD, dir);
   await fs.ensureDir(dist);
 
-  const defaultFiles: string[] = await glob(include, {
+  const globOptions = {
     caseSensitiveMatch: false,
+    cwd: CWD,
+    ignore: [dist], // always ignore dist itself
     onlyFiles: true,
     stats: false
-  });
+  };
 
-  const publishFiles = ["package.json", ...defaultFiles];
+  const defaultFiles: string[] = await glob(include, globOptions);
+  const { files } = require(path.resolve(CWD, PACKAGE_JSON));
+  const hasOptionalFiles = files && Array.isArray(files) && files.length;
+  const optionalFiles = hasOptionalFiles ? await glob(files, globOptions) : [];
+
+  const publishFiles = [PACKAGE_JSON, ...defaultFiles, ...optionalFiles];
 
   const returnFileList = () => publishFiles;
 
