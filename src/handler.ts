@@ -6,6 +6,9 @@ const PACKAGE_JSON = "package.json";
 
 // https://docs.npmjs.com/files/package.json#files
 const include = [
+  ".gitignore",
+  ".npmignore",
+  ".npmrc",
   "README*",
   "CHANGES*",
   "CHANGELOG*",

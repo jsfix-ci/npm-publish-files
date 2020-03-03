@@ -16,6 +16,7 @@ test("handler", async () => {
     force: false
   });
 
+  expect(await fs.pathExists(TMP_DIR + "/.npmignore")).toBeTruthy();
   expect(await fs.pathExists(TMP_DIR + "/LICENSE")).toBeTruthy();
   expect(await fs.pathExists(TMP_DIR + "/CHANGELOG.md")).toBeTruthy();
   expect(await fs.pathExists(TMP_DIR + "/README.md")).toBeTruthy();
@@ -47,6 +48,7 @@ test("handler", async () => {
     force: false
   });
 
+  expect(await fs.pathExists(TMP_DIR + "/.npmignore")).toBeFalsy();
   expect(await fs.pathExists(TMP_DIR + "/LICENSE")).toBeFalsy();
   expect(await fs.pathExists(TMP_DIR + "/CHANGELOG.md")).toBeFalsy();
   expect(await fs.pathExists(TMP_DIR + "/README.md")).toBeFalsy();
