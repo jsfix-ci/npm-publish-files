@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/iiroj/npm-publish-files/compare/v1.0.21...v1.1.0) (2020-03-03)
+
+
+### Features
+
+* also copy .npmrc, .npmignore and .gitignore ([69cb66e](https://github.com/iiroj/npm-publish-files/commit/69cb66ea51c3f987c6306c06dbd57a8cddd53d2e))
+* also copy files matched in the "files" property of package.json ([35e79b8](https://github.com/iiroj/npm-publish-files/commit/35e79b8ccc4cd86244e8f5bff9ef2d31e1ac7f10))
+* **handler:** promises return list of affected files ([3736c5b](https://github.com/iiroj/npm-publish-files/commit/3736c5b4ae8f3a5cd7bafebcb96e5bbf6a2cb216))
+
 ### [1.0.21](https://github.com/iiroj/npm-publish-files/compare/v1.0.20...v1.0.21) (2019-12-30)
 
 ### [1.0.20](https://github.com/iiroj/npm-publish-files/compare/v1.0.19...v1.0.20) (2019-12-01)
