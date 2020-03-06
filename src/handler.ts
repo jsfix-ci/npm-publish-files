@@ -26,7 +26,7 @@ export default async function handler({ clean, dir, force }: Yargs) {
   const globOptions = {
     caseSensitiveMatch: false,
     cwd: CWD,
-    ignore: [dist], // always ignore dist itself
+    ignore: [dir, `${dir}/**/*`], // always ignore dist itself
     onlyFiles: true,
     stats: false
   };
