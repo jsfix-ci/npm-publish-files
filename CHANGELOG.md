@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.1](https://github.com/iiroj/npm-publish-files/compare/v1.1.0...v1.1.1) (2020-03-06)
+
+
+### Bug Fixes
+
+* properly ignore dist dir for recursivity ([a09adf3](https://github.com/iiroj/npm-publish-files/commit/a09adf3fcab5cf739d71fcf5ee99c86b3742daa9))
+
 ## [1.1.0](https://github.com/iiroj/npm-publish-files/compare/v1.0.21...v1.1.0) (2020-03-03)
 
 
