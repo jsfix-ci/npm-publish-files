@@ -15,21 +15,19 @@ export const handler = async ({ clean, dir, force }: Yargs) => {
   const filter = `!{${dir},${dir}/**}`;
   const files = packFiles.filter(minimatch.filter(filter));
 
-  const returnFileList = () => files;
-
-  if (clean) {
-    // --clean flag was used, remove files instead of copying
-    return Promise.all(
+  const promises = clean
+    ? // Delete all matched files when `clean` is used
       files.map((file: string) => fs.remove(path.resolve(dist, file)))
-    ).then(returnFileList);
-  }
+    : // Copy all files. Throw when file exists unless `force` is used.
+      files.map((file: string) =>
+        fs.copy(file, path.resolve(dist, file), {
+          errorOnExist: true,
+          overwrite: force
+        })
+      );
 
-  return Promise.all(
-    files.map((file: string) =>
-      fs.copy(file, path.resolve(dist, file), {
-        errorOnExist: true,
-        overwrite: force
-      })
-    )
-  ).then(returnFileList);
+  await Promise.all(promises);
+
+  // Return list of files when done
+  return files;
 };
