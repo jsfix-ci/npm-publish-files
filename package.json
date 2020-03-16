@@ -44,6 +44,7 @@
   "dependencies": {
     "@types/minimatch": "^3.0.3",
     "fs-extra": "^8.1.0",
+    "glob": "^7.1.6",
     "minimatch": "^3.0.4",
     "npm-packlist": "^2.1.1",
     "yargs": "^15.3.0"

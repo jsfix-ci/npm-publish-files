@@ -5,7 +5,7 @@ import { handler } from "../src/handler";
 
 const TMP_DIR = path.relative(process.cwd(), "test/tmp");
 
-test("handler", async () => {
+test("handler default", async () => {
   // Remove temp files
   await fs.remove(TMP_DIR);
 
@@ -13,7 +13,9 @@ test("handler", async () => {
   await handler({
     clean: false,
     dir: TMP_DIR,
-    force: false
+    exclude: [],
+    force: false,
+    include: []
   });
 
   expect(await fs.pathExists(TMP_DIR + "/LICENSE")).toBeTruthy();
@@ -28,7 +30,9 @@ test("handler", async () => {
     handler({
       clean: false,
       dir: TMP_DIR,
-      force: false
+      exclude: [],
+      force: false,
+      include: []
     })
   ).rejects.toBeTruthy();
 
@@ -37,7 +41,9 @@ test("handler", async () => {
     handler({
       clean: false,
       dir: TMP_DIR,
-      force: true
+      exclude: [],
+      force: true,
+      include: []
     })
   ).resolves.toBeTruthy();
 
@@ -45,7 +51,9 @@ test("handler", async () => {
   await handler({
     clean: true,
     dir: TMP_DIR,
-    force: false
+    exclude: [],
+    force: false,
+    include: []
   });
 
   expect(await fs.pathExists(TMP_DIR + "/.npmignore")).toBeFalsy();
@@ -53,4 +61,38 @@ test("handler", async () => {
   expect(await fs.pathExists(TMP_DIR + "/CHANGELOG.md")).toBeFalsy();
   expect(await fs.pathExists(TMP_DIR + "/README.md")).toBeFalsy();
   expect(await fs.pathExists(TMP_DIR + "/package.json")).toBeFalsy();
+});
+
+test("handler include", async () => {
+  // Remove temp files
+  await fs.remove(TMP_DIR);
+  // Create temp files
+  await handler({
+    clean: false,
+    dir: TMP_DIR,
+    exclude: [],
+    force: false,
+    include: ["jest.config.js", "*.json"]
+  });
+
+  expect(await fs.pathExists(TMP_DIR + "/jest.config.js")).toBeTruthy();
+  expect(await fs.pathExists(TMP_DIR + "/tsconfig.json")).toBeTruthy();
+  expect(await fs.pathExists(TMP_DIR + "/tslint.json")).toBeTruthy();
+});
+
+test("handler exclude", async () => {
+  // Remove temp files
+  await fs.remove(TMP_DIR);
+  // Create temp files
+  await handler({
+    clean: false,
+    dir: TMP_DIR,
+    exclude: ["LICENSE", "*.md"],
+    force: false,
+    include: []
+  });
+
+  expect(await fs.pathExists(TMP_DIR + "/LICENSE")).toBeFalsy();
+  expect(await fs.pathExists(TMP_DIR + "/CHANGELOG.md")).toBeFalsy();
+  expect(await fs.pathExists(TMP_DIR + "/README.md")).toBeFalsy();
 });
