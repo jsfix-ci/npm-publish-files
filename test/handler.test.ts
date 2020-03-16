@@ -1,7 +1,7 @@
 import * as fs from "fs-extra";
 import * as path from "path";
 
-import handler from "../src/handler";
+import { handler } from "../src/handler";
 
 const TMP_DIR = path.relative(process.cwd(), "test/tmp");
 
@@ -16,7 +16,6 @@ test("handler", async () => {
     force: false
   });
 
-  expect(await fs.pathExists(TMP_DIR + "/.npmignore")).toBeTruthy();
   expect(await fs.pathExists(TMP_DIR + "/LICENSE")).toBeTruthy();
   expect(await fs.pathExists(TMP_DIR + "/CHANGELOG.md")).toBeTruthy();
   expect(await fs.pathExists(TMP_DIR + "/README.md")).toBeTruthy();

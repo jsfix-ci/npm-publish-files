@@ -42,15 +42,19 @@
     }
   },
   "dependencies": {
-    "fast-glob": "^3.2.2",
+    "@types/minimatch": "^3.0.3",
     "fs-extra": "^8.1.0",
+    "minimatch": "^3.0.4",
+    "npm-packlist": "^2.1.1",
     "yargs": "^15.3.0"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^8.3.4",
     "@types/fs-extra": "^8.1.0",
+    "@types/glob": "^7.1.1",
     "@types/jest": "^25.1.4",
     "@types/node": "^13.9.1",
+    "@types/npm-packlist": "^1.1.1",
     "@types/yargs": "^15.0.4",
     "commitlint": "^8.3.5",
     "husky": "^4.2.3",

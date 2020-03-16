@@ -1,6 +1,6 @@
 import yargs from "yargs";
 
-import handler from "./handler";
+import { handler } from "./handler";
 
 yargs
   .command<Yargs>({
