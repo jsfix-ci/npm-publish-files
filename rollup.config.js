@@ -11,8 +11,5 @@ export default {
     banner: "#!/usr/bin/env node"
   },
   external: ["fs", "path", ...Object.keys(pkg.dependencies)],
-  plugins: [
-    typescript({ typescript: require("typescript") }),
-    json()
-  ]
+  plugins: [typescript({ typescript: require("typescript") }), json()]
 };

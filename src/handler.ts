@@ -4,7 +4,7 @@ import minimatch from "minimatch";
 import packlist from "npm-packlist";
 import path from "path";
 
-const ensureDir = async (dir: string) => {
+const ensureDir = async (dir: string): Promise<void> => {
   try {
     const stats = await fs.promises.stat(dir);
     if (!stats.isDirectory()) {
@@ -19,7 +19,7 @@ const ensureDir = async (dir: string) => {
   }
 };
 
-const glob = (pattern: string, options: GlobOptions) =>
+const glob = (pattern: string, options: GlobOptions): Promise<string[]> =>
   new Promise<string[]>((resolve, reject) =>
     cbGlob(pattern, options, (err, matches) => {
       if (err) return reject(err);
@@ -41,7 +41,7 @@ export const handler = async ({
   exclude = [],
   force = false,
   include = []
-}: Handler) => {
+}: Handler): Promise<string[]> => {
   const CWD = process.cwd();
   const dist = path.resolve(CWD, dir);
   await ensureDir(dist);

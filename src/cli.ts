@@ -4,7 +4,8 @@ import { description, name, version } from "../package.json";
 
 import { handler } from "./handler";
 
-const collect = (value: string, previous: string[]) => previous.concat(value);
+const collect = (value: string, previous: string[]): string[] =>
+  previous.concat(value);
 
 program
   .name(name)
@@ -29,7 +30,7 @@ program
     await handler({ clean, dir, exclude, force, include });
   });
 
-(async () => {
+(async (): Promise<void> => {
   try {
     await program.parseAsync(process.argv);
   } catch (err) {

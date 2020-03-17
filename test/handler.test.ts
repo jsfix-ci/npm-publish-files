@@ -77,7 +77,6 @@ test("handler include", async () => {
 
   expect(await fs.pathExists(TMP_DIR + "/jest.config.js")).toBeTruthy();
   expect(await fs.pathExists(TMP_DIR + "/tsconfig.json")).toBeTruthy();
-  expect(await fs.pathExists(TMP_DIR + "/tslint.json")).toBeTruthy();
 });
 
 test("handler exclude", async () => {

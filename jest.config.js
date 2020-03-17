@@ -1,6 +1,6 @@
 module.exports = {
   collectCoverage: true,
-  coverageReporters: process.env.CI ? ['text-summary'] : ['lcov'],
-  preset: 'ts-jest',
+  coverageReporters: process.env.CI ? ["text-summary"] : ["lcov"],
+  preset: "ts-jest",
   testEnvironment: "node"
 };
