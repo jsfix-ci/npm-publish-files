@@ -6,15 +6,22 @@
 [![dependencies](https://img.shields.io/david/iiroj/npm-publish-files.svg)](https://github.com/iiroj/npm-publish-files/blob/master/package.json)
 [![devDependencies](https://img.shields.io/david/dev/iiroj/npm-publish-files.svg)](https://github.com/iiroj/npm-publish-files/blob/master/package.json)
 
-Copy special files <code>npm publish</code> always includes to a sub directory.
+```sh
+❯ npx npm-publish-files --help
+Usage: npm-publish-files [options] <dir>
+
+Copy special files `npm publish` always includes to a sub directory
+
+Options:
+  -V, --version         output the version number
+  -f, --force           overwrite existing files (default: false)
+  -c, --clean           remove files instead of copying (default: false)
+  -i, --include <glob>  glob for additional files (default: [])
+  -x, --exclude <glob>  glob to prevent copying files (default: [])
+  -h, --help            display help for command
+```
 
 If you want to build a large npm project into a sub folder `dist/`, but then treat that as the root directory for the published package, you will need to copy all other special files npm includes in the publish. Let `npm-publish-files` do that for you!
-
-### Install
-
-```bash
-npm install --save-dev npm-publish-files
-```
 
 ### Setup
 
@@ -32,13 +39,10 @@ Any additional files specified in the ["file" property of package.json](https://
 
 After this your are free to run `npm publish dist`.
 
-### Options
-
-`npm-publish-files` supports a few options:
-
-* `--force` — Copy files and overwrite existing ones [default: false]
-* `--clean` — Remove files instead of copying them [default: false]
-
 ## Files Copied
 
-`npm-publish-files` chooses the files to copy according to the [npm docs](https://docs.npmjs.com/files/package.json#files).
+`npm-publish-files` uses the [npm-packlist](https://github.com/npm/npm-packlist) package under the hood to determine which files to copy. Please read its readme to better understand the algorhithm.
+
+To copy additional files, supply one or more globs with the `--include` option. All matched files will be copied to `<dir>`.
+
+To exclude files from being copied, supply one or more globs with the `--exclude` option. These will be applied last, so they filter both the default files, as well as those matched via the `--include` option.
