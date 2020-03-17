@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/iiroj/npm-publish-files/compare/v1.1.2...v1.2.0) (2020-03-17)
+
+
+### Features
+
+* add --include and --exclude globs ([69af86a](https://github.com/iiroj/npm-publish-files/commit/69af86a1ca7e27f6fa43e0aac21a0affd5f09483))
+* use npm-packlist for most of the globbing ([2556fb4](https://github.com/iiroj/npm-publish-files/commit/2556fb495082534fad85e466133ec7eb87916de0))
+
+
+### Bug Fixes
+
+* move @types/minimatch as devDependency ([a55b50a](https://github.com/iiroj/npm-publish-files/commit/a55b50a4d8002e825e8facec63205b4b4d11c1f3))
+
 ### [1.1.2](https://github.com/iiroj/npm-publish-files/compare/v1.1.1...v1.1.2) (2020-03-14)
 
 ### [1.1.1](https://github.com/iiroj/npm-publish-files/compare/v1.1.0...v1.1.1) (2020-03-06)
