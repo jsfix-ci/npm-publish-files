@@ -27,7 +27,7 @@ const glob = (pattern: string, options: GlobOptions) =>
     })
   );
 
-export type Args = {
+type Handler = {
   clean: boolean;
   dir: string;
   force: boolean;
@@ -41,7 +41,7 @@ export const handler = async ({
   exclude = [],
   force = false,
   include = []
-}: Args) => {
+}: Handler) => {
   const CWD = process.cwd();
   const dist = path.resolve(CWD, dir);
   await ensureDir(dist);

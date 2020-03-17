@@ -1,35 +1,39 @@
-import yargs from "yargs";
+import { program } from "commander";
 
-import { Args, handler } from "./handler";
+import { description, name, version } from "../package.json";
 
-yargs.command<Args>({
-  command: "$0 <dir>",
-  describe: "copy special files `npm publish` always includes to <dir>",
-  builder: {
-    force: {
-      alias: "f",
-      default: false,
-      describe: "overwrite existing files",
-      type: "boolean"
-    },
-    clean: {
-      alias: "c",
-      default: false,
-      describe: "remove files instead of copying",
-      type: "boolean"
-    },
-    include: {
-      alias: "i",
-      default: [],
-      describe: "glob for additional files",
-      type: "array"
-    },
-    exclude: {
-      alias: "x",
-      default: [],
-      describe: "glob to prevent copying files",
-      type: "array"
-    }
-  },
-  handler
-}).argv;
+import { handler } from "./handler";
+
+const collect = (value: string, previous: string[]) => previous.concat(value);
+
+program
+  .name(name)
+  .version(version)
+  .description(description)
+  .arguments("<dir>")
+  .option("-f, --force", "overwrite existing files", false)
+  .option("-c, --clean", "remove files instead of copying", false)
+  .option<string[]>(
+    "-i, --include <glob>",
+    "glob for additional files",
+    collect,
+    []
+  )
+  .option<string[]>(
+    "-x, --exclude <glob>",
+    "glob to prevent copying files",
+    collect,
+    []
+  )
+  .action(async (dir: string, { clean, exclude, force, include }) => {
+    await handler({ clean, dir, exclude, force, include });
+  });
+
+(async () => {
+  try {
+    await program.parseAsync(process.argv);
+  } catch (err) {
+    console.error(err);
+    process.exit(1);
+  }
+})();

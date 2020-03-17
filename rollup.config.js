@@ -1,4 +1,5 @@
-import typescript from "rollup-plugin-typescript2";
+import json from "@rollup/plugin-json";
+import typescript from "@rollup/plugin-typescript";
 
 import pkg from "./package.json";
 
@@ -9,10 +10,9 @@ export default {
     format: "cjs",
     banner: "#!/usr/bin/env node"
   },
-  external: ["path", ...Object.keys(pkg.dependencies)],
+  external: ["fs", "path", ...Object.keys(pkg.dependencies)],
   plugins: [
-    typescript({
-      typescript: require("typescript")
-    })
+    typescript({ typescript: require("typescript") }),
+    json()
   ]
 };

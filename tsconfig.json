@@ -2,9 +2,11 @@
   "compilerOptions": {
     "lib": ["es6"],
     "esModuleInterop": true,
+    "moduleResolution": "node",
     "noResolve": false,
     "noUnusedParameters": true,
     "pretty": true,
+    "resolveJsonModule": true,
     "strict": true,
     "target": "es5"
   }
