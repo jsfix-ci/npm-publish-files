@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.2](https://github.com/iiroj/npm-publish-files/compare/v1.2.1...v1.2.2) (2020-03-25)
+
+
+### Bug Fixes
+
+* ensure directories are created when copying files ([4eb0656](https://github.com/iiroj/npm-publish-files/commit/4eb0656d6ff3e8156bba161c96ced56a329d6dde))
+
 ### [1.2.1](https://github.com/iiroj/npm-publish-files/compare/v1.2.0...v1.2.1) (2020-03-17)
 
 
