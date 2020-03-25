@@ -1,4 +1,4 @@
-import fs from "fs";
+import { constants, promises as fs } from "fs";
 import cbGlob, { IOptions as GlobOptions } from "glob";
 import minimatch from "minimatch";
 import packlist from "npm-packlist";
@@ -6,13 +6,13 @@ import path from "path";
 
 const ensureDir = async (dir: string): Promise<void> => {
   try {
-    const stats = await fs.promises.stat(dir);
+    const stats = await fs.stat(dir);
     if (!stats.isDirectory()) {
       throw new Error(`${dir} exists but is not a directory!`);
     }
   } catch (err) {
     if (err.code === "ENOENT") {
-      await fs.promises.mkdir(dir);
+      await fs.mkdir(dir, { recursive: true });
     } else {
       throw err;
     }
@@ -79,17 +79,18 @@ export const handler = async ({
   await Promise.all(
     clean
       ? // Delete all matched files when `clean` is used
-        files.map((file: string) =>
-          fs.promises.unlink(path.resolve(dist, file))
-        )
+        files.map((file: string) => fs.unlink(path.resolve(dist, file)))
       : // Copy all files. Throw when file exists unless `force` is used.
-        files.map((file: string) =>
-          fs.promises.copyFile(
+        files.map(async (file: string) => {
+          const to = path.resolve(dist, file);
+          const dirname = path.dirname(to);
+          await ensureDir(dirname);
+          await fs.copyFile(
             path.resolve(CWD, file),
-            path.resolve(dist, file),
-            force ? undefined : fs.constants.COPYFILE_EXCL
-          )
-        )
+            to,
+            force ? undefined : constants.COPYFILE_EXCL
+          );
+        })
   );
 
   // Return list of files when done

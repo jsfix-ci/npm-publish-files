@@ -95,3 +95,19 @@ test("handler exclude", async () => {
   expect(await fs.pathExists(TMP_DIR + "/CHANGELOG.md")).toBeFalsy();
   expect(await fs.pathExists(TMP_DIR + "/README.md")).toBeFalsy();
 });
+
+test("recursive directory create", async () => {
+  // Remove temp files
+  await fs.remove(TMP_DIR);
+  // Create temp files
+  await handler({
+    clean: false,
+    dir: TMP_DIR,
+    exclude: [],
+    force: false,
+    include: ["src/*.ts"]
+  });
+
+  expect(await fs.pathExists(TMP_DIR + "/src/cli.ts")).toBeTruthy();
+  expect(await fs.pathExists(TMP_DIR + "/src/handler.ts")).toBeTruthy();
+});
