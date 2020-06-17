@@ -67,7 +67,7 @@ export const handler = async ({
   );
 
   // Get final list of files after running all exclude filters
-  const files = exclude.reduce(
+  const files = ["node_modules", ...exclude].reduce(
     (files, excudeGlob) =>
       files.filter(
         (value, index, array) =>

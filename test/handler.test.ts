@@ -22,6 +22,7 @@ test("handler default", async () => {
   expect(await fs.pathExists(TMP_DIR + "/CHANGELOG.md")).toBeTruthy();
   expect(await fs.pathExists(TMP_DIR + "/README.md")).toBeTruthy();
   expect(await fs.pathExists(TMP_DIR + "/package.json")).toBeTruthy();
+  expect(await fs.pathExists(TMP_DIR + "/node_modules")).toBeFalsy();
   expect(await fs.pathExists(TMP_DIR + "/package-lock.json")).toBeFalsy();
   expect(await fs.pathExists(TMP_DIR + "/tmp")).toBeFalsy();
 
