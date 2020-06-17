@@ -8,8 +8,8 @@ export default {
   output: {
     file: pkg.bin,
     format: "cjs",
-    banner: "#!/usr/bin/env node"
+    banner: "#!/usr/bin/env node",
   },
   external: ["fs", "path", ...Object.keys(pkg.dependencies)],
-  plugins: [typescript({ typescript: require("typescript") }), json()]
+  plugins: [typescript({ typescript: require("typescript") }), json()],
 };

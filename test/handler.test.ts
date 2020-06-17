@@ -15,7 +15,7 @@ test("handler default", async () => {
     dir: TMP_DIR,
     exclude: [],
     force: false,
-    include: []
+    include: [],
   });
 
   expect(await fs.pathExists(TMP_DIR + "/LICENSE")).toBeTruthy();
@@ -33,7 +33,7 @@ test("handler default", async () => {
       dir: TMP_DIR,
       exclude: [],
       force: false,
-      include: []
+      include: [],
     })
   ).rejects.toBeTruthy();
 
@@ -44,7 +44,7 @@ test("handler default", async () => {
       dir: TMP_DIR,
       exclude: [],
       force: true,
-      include: []
+      include: [],
     })
   ).resolves.toBeTruthy();
 
@@ -54,7 +54,7 @@ test("handler default", async () => {
     dir: TMP_DIR,
     exclude: [],
     force: false,
-    include: []
+    include: [],
   });
 
   expect(await fs.pathExists(TMP_DIR + "/.npmignore")).toBeFalsy();
@@ -73,7 +73,7 @@ test("handler include", async () => {
     dir: TMP_DIR,
     exclude: [],
     force: false,
-    include: ["jest.config.js", "*.json"]
+    include: ["jest.config.js", "*.json"],
   });
 
   expect(await fs.pathExists(TMP_DIR + "/jest.config.js")).toBeTruthy();
@@ -89,7 +89,7 @@ test("handler exclude", async () => {
     dir: TMP_DIR,
     exclude: ["LICENSE", "*.md"],
     force: false,
-    include: []
+    include: [],
   });
 
   expect(await fs.pathExists(TMP_DIR + "/LICENSE")).toBeFalsy();
@@ -106,7 +106,7 @@ test("recursive directory create", async () => {
     dir: TMP_DIR,
     exclude: [],
     force: false,
-    include: ["src/*.ts"]
+    include: ["src/*.ts"],
   });
 
   expect(await fs.pathExists(TMP_DIR + "/src/cli.ts")).toBeTruthy();

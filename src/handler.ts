@@ -40,7 +40,7 @@ export const handler = async ({
   dir,
   exclude = [],
   force = false,
-  include = []
+  include = [],
 }: Handler): Promise<string[]> => {
   const CWD = process.cwd();
   const dist = path.resolve(CWD, dir);
@@ -52,8 +52,8 @@ export const handler = async ({
   // Get manually specified files
   const includedFiles: string[] = [];
   await Promise.all(
-    include.map(pattern =>
-      glob(pattern, { cwd: CWD }).then(matches =>
+    include.map((pattern) =>
+      glob(pattern, { cwd: CWD }).then((matches) =>
         includedFiles.push(...matches)
       )
     )
