@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.3](https://github.com/iiroj/npm-publish-files/compare/v1.2.2...v1.2.3) (2020-06-17)
+
+
+### Bug Fixes
+
+* ensure node_modules is always ignored ([fc2a8c7](https://github.com/iiroj/npm-publish-files/commit/fc2a8c746193b43a377c7fe2542ecb63378fedb7))
+
 ### [1.2.2](https://github.com/iiroj/npm-publish-files/compare/v1.2.1...v1.2.2) (2020-03-25)
 
 
