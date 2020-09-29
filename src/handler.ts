@@ -50,7 +50,7 @@ export const handler = async ({
   const packFiles = await packlist({ path: CWD });
 
   // Get manually specified files
-  const includedFiles: string[] = [];
+  const includedFiles: string[] = [".npmignore"];
   await Promise.all(
     include.map((pattern) =>
       glob(pattern, { cwd: CWD }).then((matches) =>
