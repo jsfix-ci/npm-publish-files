@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.4](https://github.com/iiroj/npm-publish-files/compare/v1.2.3...v1.2.4) (2020-09-29)
+
+
+### Bug Fixes
+
+* always copy .npmignore file just in case ([e6106dc](https://github.com/iiroj/npm-publish-files/commit/e6106dcdd3bc91623124ab2fb5a415fe2fbde9c0))
+* do not lint all files during commit ([a4db139](https://github.com/iiroj/npm-publish-files/commit/a4db13968e051591882d664eabbc666214938ae6))
+
 ### [1.2.3](https://github.com/iiroj/npm-publish-files/compare/v1.2.2...v1.2.3) (2020-06-17)
 
 
