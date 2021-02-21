@@ -49,8 +49,15 @@ export const handler = async ({
   // Get default set of files
   const packFiles = await packlist({ path: CWD });
 
-  // Get manually specified files
-  const includedFiles: string[] = [".npmignore"];
+  const includedFiles: string[] = [];
+
+  // Add .npmignore if it exists
+  try {
+    const npmIgnoreFile = path.resolve(__dirname, ".npmignore");
+    await fs.stat(npmIgnoreFile);
+    includedFiles.push(".npmignore");
+  } catch {}
+
   await Promise.all(
     include.map((pattern) =>
       glob(pattern, { cwd: CWD }).then((matches) =>
