@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/iiroj/npm-publish-files/compare/v1.2.5...v1.3.0) (2021-02-21)
+
+
+### Features
+
+* replace glob with globby ([de4f4d0](https://github.com/iiroj/npm-publish-files/commit/de4f4d05fc10a771e0d6040caa34296cf2d1ec5f))
+
+
+### Bug Fixes
+
+* do not crash if .npmignore doesn't exist ([343dad3](https://github.com/iiroj/npm-publish-files/commit/343dad3587b774049286df3a74e43e4474dcb83c))
+
 ### [1.2.5](https://github.com/iiroj/npm-publish-files/compare/v1.2.3...v1.2.5) (2021-02-19)
 
 
