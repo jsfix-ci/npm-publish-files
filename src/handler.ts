@@ -1,5 +1,5 @@
 import { constants, promises as fs } from "fs";
-import cbGlob, { IOptions as GlobOptions } from "glob";
+import globby from "globby";
 import minimatch from "minimatch";
 import packlist from "npm-packlist";
 import path from "path";
@@ -18,14 +18,6 @@ const ensureDir = async (dir: string): Promise<void> => {
     }
   }
 };
-
-const glob = (pattern: string, options: GlobOptions): Promise<string[]> =>
-  new Promise<string[]>((resolve, reject) =>
-    cbGlob(pattern, options, (err, matches) => {
-      if (err) return reject(err);
-      return resolve(matches);
-    })
-  );
 
 type Handler = {
   clean: boolean;
@@ -60,7 +52,7 @@ export const handler = async ({
 
   await Promise.all(
     include.map((pattern) =>
-      glob(pattern, { cwd: CWD }).then((matches) =>
+      globby(pattern, { cwd: CWD, expandDirectories: true }).then((matches) =>
         includedFiles.push(...matches)
       )
     )
