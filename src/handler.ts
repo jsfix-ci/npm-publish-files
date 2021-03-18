@@ -45,7 +45,7 @@ export const handler = async ({
 
   // Add .npmignore if it exists
   try {
-    const npmIgnoreFile = path.resolve(__dirname, ".npmignore");
+    const npmIgnoreFile = path.resolve(process.cwd(), ".npmignore");
     await fs.stat(npmIgnoreFile);
     includedFiles.push(".npmignore");
   } catch {}
