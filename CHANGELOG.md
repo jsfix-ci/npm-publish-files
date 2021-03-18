@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.3.1](https://github.com/iiroj/npm-publish-files/compare/v1.3.0...v1.3.1) (2021-03-18)
+
+
+### Bug Fixes
+
+* resolve .npmignore from CWD instead of script dir ([e29156f](https://github.com/iiroj/npm-publish-files/commit/e29156f9d07aafd13c1c9910a0f2b125cf5607a8))
+
 ## [1.3.0](https://github.com/iiroj/npm-publish-files/compare/v1.2.5...v1.3.0) (2021-02-21)
 
 
