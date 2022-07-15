@@ -43,7 +43,7 @@
     }
   },
   "dependencies": {
-    "commander": "^7.1.0",
+    "commander": "^8.3.0",
     "globby": "^11.0.2",
     "minimatch": "^3.0.4",
     "npm-packlist": "^2.1.4"
